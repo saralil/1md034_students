@@ -1,0 +1,78 @@
+@import 'https://fonts.googleapis.com/css?family=Eater|Slackey';
+
+body {
+    font-family: 'Arial';
+    font-size: 2vh;
+}
+
+h1 {
+  font-family: 'Slackey';
+  color: #000000;
+  margin: 30px;
+}
+
+.header {
+
+}
+
+#headimage {
+  opacity: 0.8;
+   width: 100%;
+   height: auto;
+}
+
+#headline {
+  position: absolute;
+  margin-top: -20%;
+}
+
+#selection {
+  background-color: #000000;
+  color: #ffffff;
+  border: 10px dashed #ffffff;
+  padding-left: 15px;
+}
+
+#information {
+  background-color: #ffffff;
+  color: #000000;
+  border: 10px dashed #000000;
+  padding-left: 15px
+}
+
+select[id="payment"]:hover, input[id="gender"], input[type= "submit"]:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+input[type = "submit"] {
+  margin-top: 10px;
+}
+
+div[id="genderinfo"] {
+  margin-top: 25px;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+.fiskar {
+  text-align: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 30% 30% 30%;
+  background-color: #000;
+  color: #fff;
+ }
+
+ .attributes {
+   font-weight: bold;
+   text-align: left;
+   padding-left: 20%;
+ }
+
+ .name {
+   font-family: 'Eater';
+ }
