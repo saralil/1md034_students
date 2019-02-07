@@ -3,6 +3,10 @@
     <head>
       <!--<link rel="stylesheet" type="text/css" href="/css/reset.css">-->
       <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <script type="text/javascript" src="js/menu.js"></script>
+      <script src="js/js_script.js" defer></script>
+      <script src="https://vuejs.org/js/vue.js"></script>
+      <script src="js/vue_script.js" defer></script>
       <title>Close this tab</title>
       <meta charset="utf-8"/>
     </head>
@@ -16,71 +20,32 @@
         <section id="selection">
           <h3>Select your champion</h3>
           <p>Pick your boi</p>
-          <div class="fiskar">
-            <div class="fish name a">
-              A puffy boi
-            </div>
-            <div class="fish name b">
-              A long boi
-            </div>
-            <div class="fish name c">
-              A toothy boi
-            </div>
-            <div class="fish image a">
-              <img src="http://animalstime.com/wp-content/uploads/2012/08/pictures-of-puffer-fish.jpg"
-              alt="Puff fish" title="Puffy boi" height="200">
-            </div>
-            <div class="fish image b">
-              <img src="https://i.kym-cdn.com/photos/images/newsfeed/000/234/772/71e.jpg"
-              alt="Bad joke eel" title="Long boi" height="200">
-            </div>
-            <div class="fish image c">
-              <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fdk-find-out%2Fimage%2Fupload%2Fq_80%2Cw_1920%2Cf_auto%2FA-Corbis-42-33054106_ftwzly.jpg&f=1"
-              alt="Shark" title="Toothy boi" height="200">
-            </div>
-            <div class="fish attributes a">
-              <ul>
-                <li>Ruler of the universe</li>
-                <li>Up to no good</li>
-              </ul>
-            </div>
-            <div class="fish attributes b">
-              <ul>
-                <li>Special</li>
-                <li>Tells bad jokes</li>
-              </ul>
-            </div>
-            <div class="fish attributes c">
-              <ul>
-                <li>Offers loans</li>
-                <li>High interest rates</li>
-              </ul>
-            </div>
+          <div id="fishes" class="fiskar">
           </div>
         </section>
         <section id="information">
           <h3>Customer information</h3>
           <p>This is where you provide</p>
-          <form>
+          <form name="personal">
             <h4>Delivery information</h4>
             <p>
               <label for="fullname">Full name</label><br>
-              <input type="text" id="fullname" name="fn" required="required"
+              <input type="text" id="fullname" name="fn" required="required" class="address"
               placeholder="First- and Last name">
             </p>
             <p>
               <label for="email">E-mail</label><br>
-              <input type="email" id="email" name="em" required="required"
+              <input type="email" id="email" name="em" required="required" class="address"
               placeholder="E-mail address">
             </p>
             <p>
               <label for="street">Street</label><br>
-              <input type="text" id="street" name="strt" required="required"
+              <input type="text" id="street" name="strt" required="required" class="address"
               placeholder="Street name">
             </p>
             <p>
               <label for="house">House</label><br>
-              <input type="number" id="house" name="hs" required="required"
+              <input type="number" id="house" name="hs" required="required" class="address"
               placeholder="House number">
             </p>
             <p>
@@ -95,15 +60,15 @@
             </p>
             <div id="genderinfo">
               <label for="gender">Gender</label><br>
-              <input type="radio" id="gender" name="gndr" required="required">Female<br>
-              <input type="radio" id="gender" name="gndr" required="required">Male<br>
-              <input type="radio" id="gender" name="gndr" required="required">Non-binary<br>
-              <input type="radio" id="gender" name="gndr" required="required" checked="checked">None of your buissnes
-            <p>
-              <input type="submit" value="Send">
-            </p>
+              <input type="radio" id="female" name="gndr" required="required" value="Female">Female<br>
+              <input type="radio" id="male" name="gndr" required="required" value="Male">Male<br>
+              <input type="radio" id="non-binary" name="gndr" required="required" value="Non-binary">Non-binary<br>
+              <input type="radio" id="none" name="gndr" required="required" checked="checked" value="None of your buissnes">None of your buissnes
           </div>
           </form>
+          <div id="orders">
+            <button v-on:click="markDone()" id="done" type="submit">Donelidone</button>
+          </div>
         </main>
         <footer>
           &copy;2019 nolife

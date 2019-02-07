@@ -1,5 +1,11 @@
 @import 'https://fonts.googleapis.com/css?family=Eater|Slackey';
 
+@media screen and (max-width: 800px) {
+    .fishImg {
+        width: 30px;
+    }
+}
+
 body {
     font-family: 'Arial';
     font-size: 2vh;
@@ -9,10 +15,6 @@ h1 {
   font-family: 'Slackey';
   color: #000000;
   margin: 30px;
-}
-
-.header {
-
 }
 
 #headimage {
@@ -45,8 +47,9 @@ select[id="payment"]:hover, input[id="gender"], input[type= "submit"]:hover {
   cursor: pointer;
 }
 
-input[type = "submit"] {
+button[type = "submit"] {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 div[id="genderinfo"] {
@@ -58,11 +61,11 @@ table {
   text-align: center;
 }
 
-.fiskar {
+#fishes {
   text-align: center;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: 30% 30% 30%;
+  grid-gap: 10%s;
+  grid-template-columns: 18% 18% 18% 18% 18%;
   background-color: #000;
   color: #fff;
  }
@@ -73,6 +76,17 @@ table {
    padding-left: 20%;
  }
 
- .name {
+ .fishName {
    font-family: 'Eater';
+   font-size: 100%;
  }
+
+.fishImg {
+  height: 200px;
+}
+
+.box {
+  position: absolute;
+  text-align: left;
+  transform: scale(1.5);
+}
