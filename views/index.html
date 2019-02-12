@@ -3,12 +3,17 @@
     <head>
       <!--<link rel="stylesheet" type="text/css" href="/css/reset.css">-->
       <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <link rel="stylesheet" href="css/deli-very.css">
       <script type="text/javascript" src="js/menu.js"></script>
       <script src="js/js_script.js" defer></script>
       <script src="https://vuejs.org/js/vue.js"></script>
       <script src="js/vue_script.js" defer></script>
+      <script src="/vue/vue.js" defer></script>
+      <script src="/socket.io/socket.io.js" defer></script>
+      <script src="js/deli-very.js" defer></script>
       <title>Close this tab</title>
       <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
       <main>
@@ -39,16 +44,6 @@
               placeholder="E-mail address">
             </p>
             <p>
-              <label for="street">Street</label><br>
-              <input type="text" id="street" name="strt" required="required" class="address"
-              placeholder="Street name">
-            </p>
-            <p>
-              <label for="house">House</label><br>
-              <input type="number" id="house" name="hs" required="required" class="address"
-              placeholder="House number">
-            </p>
-            <p>
               <label for="payment">Payment method</label><br>
               <select id="payment" name="pymnt">
                 <option>Swish</option>
@@ -66,10 +61,27 @@
               <input type="radio" id="none" name="gndr" required="required" checked="checked" value="None of your buissnes">None of your buissnes
           </div>
           </form>
-          <div id="orders">
-            <button v-on:click="markDone()" id="done" type="submit">Donelidone</button>
-          </div>
-        </main>
+          <section id="sendit">
+            <h1> Click in the map! </h1>
+            <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+            <div class="view-box">
+              <div id="dots" v-on:click="displayOrder">
+                <div
+                  v-if = "orders"
+                  v-bind:style="{ left: orders.x + 'px', top: orders.y + 'px'}">
+                  xD
+                </div>
+              </div>
+            </div>
+            <div id="orders">
+              <button v-on:click="addOrder" id="done" type="submit">Donelidone</button>
+              <div id="confirmation">
+                <p id="tmp">
+                </p>
+              </div>
+            </div>
+          </section>
+          </main>
         <footer>
           &copy;2019 nolife
         </footer>

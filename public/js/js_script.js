@@ -36,6 +36,7 @@ for (const fisk in fiskar) {
   const checkbox = document.createElement("input");
   checkbox.type ="checkbox";
   checkbox.className = "box";
+  checkbox.value = fiskar[fisk].name;
   imgDiv.appendChild(checkbox)
 
   const imgItem = document.createElement("img");
@@ -66,42 +67,64 @@ for (const fisk in fiskar) {
 
 const myButton = document.getElementById('done');
 
-function done() {
-  const info = [];
-  for (i = 0; i < 4; i++) {
-    info[i] = document.getElementsByClassName('address')[i].value;
-  }
-  info[4] = document.getElementById("payment").value;
-  const radios = document.forms['personal'].gndr;
-  for (i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-    info[5] = radios[i].value;
-    break;
-  }
-  }
-  const endDiv = document.getElementById("orders");
+function ordered() {
   const fishes = document.getElementsByClassName("box");
+  const arr = [];
+  var c = 0;
   for (x in fishes) {
-
     if (fishes[x].checked) {
-      const paraDiv = document.createElement('p');
-      const txt = document.createTextNode(fiskar[x].name);
-      endDiv.appendChild(paraDiv);
-      paraDiv.appendChild(txt);
+      arr.push(fiskar[x].name)
     }
   }
-  for (i in info) {
-    const paraDiv = document.createElement("p");
-    endDiv.appendChild(paraDiv);
-    const txt = document.createTextNode(info[i]);
-    paraDiv.appendChild(txt);
+    return arr;
+}
+
+function contact() {
+  const info = [];
+  const address = document.getElementsByClassName('address');
+  for (i = 0; i < address.length; i++) {
+    info.push(address[i].value);
   }
+  info.push(document.getElementById("payment").value);
+  info.push(document.querySelector("input[name=gndr]:checked").value);
   return info;
 }
 
-new Vue({
-    el: '#orders',
-    methods: {
-        markDone: done
-      },
-});
+function done() {
+  const items = ordered();
+  const info = contact();
+
+  const elem = document.createElement("div");
+  elem.id = "tmp";
+
+  var heading = document.createElement("h2");
+  const conf = document.createTextNode("Order confirmation");
+  heading.appendChild(conf);
+  elem.appendChild(heading);
+  heading = document.createElement("h3");
+  const txt = document.createTextNode("Customer details")
+  heading.appendChild(txt);
+  elem.appendChild(heading);
+
+  for (x in info) {
+  const paraDiv = document.createElement('p');
+  const txt = document.createTextNode(info[x]);
+  elem.appendChild(paraDiv);
+  paraDiv.appendChild(txt);
+  }
+  heading = document.createElement("h3");
+  const sum = document.createTextNode("Order summary");
+  heading.appendChild(sum);
+  elem.appendChild(heading);
+
+  const list = document.createElement("ul");
+  for (x in items) {
+    const li = document.createElement("li");
+    const txt = document.createTextNode(items[x]);
+    li.appendChild(txt);
+    list.appendChild(li);
+  }
+  elem.appendChild(list);
+
+  document.getElementById("confirmation").replaceChild(elem, document.getElementById("tmp"));
+}
